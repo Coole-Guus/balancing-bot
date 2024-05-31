@@ -4,16 +4,16 @@ from time import sleep   # Imports sleep (aka wait or pause) into the program
 GPIO.setmode(GPIO.BOARD) # Sets the pin numbering system to use the physical layout
 
 # Set up pin 12 for PWM
-GPIO.setup(12,GPIO.OUT)  # Sets up pin 12 to an output (instead of an input)
+GPIO.setup(12, GPIO.OUT)  # Sets up pin 12 to an output (instead of an input)
 a = GPIO.PWM(12, 50)     # Sets up pin 12 as a PWM pin
 
-GPIO.setup(32,GPIO.OUT)  # Sets up pin 11 to an output (instead of an input)
+GPIO.setup(32, GPIO.OUT)  # Sets up pin 11 to an output (instead of an input)
 b = GPIO.PWM(32, 50)     # Sets up pin 11 as a PWM pin
 
-GPIO.setup(33,GPIO.OUT)  # Sets up pin 11 to an output (instead of an input)
+GPIO.setup(33, GPIO.OUT)  # Sets up pin 11 to an output (instead of an input)
 c = GPIO.PWM(33, 50)     # Sets up pin 11 as a PWM pin
 
-GPIO.setup(35,GPIO.OUT)  # Sets up pin 11 to an output (instead of an input)
+GPIO.setup(35, GPIO.OUT)  # Sets up pin 11 to an output (instead of an input)
 d = GPIO.PWM(35, 50)     # Sets up pin 11 as a PWM pin
 
 a.start(0)               # Starts running PWM on the pin and sets it to 0
