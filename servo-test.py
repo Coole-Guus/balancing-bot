@@ -12,16 +12,17 @@ servo_d = Servo(19)  # BCM equivalent of physical pin 35
 try:
     while True:  # This will keep the servo sweep running until the process is interrupted
         # Move the servos back and forth
-        for servo in [servo_a, servo_b]:
-            servo.value = 0.4    # Move the servo to its maximum position
-        for servo in [servo_c, servo_d]:
-            servo.value = 0.2    # Move the servo to its minimum position
+        servo_a.value = 0.2
+        servo_b.value = 0.2
+        servo_c.value = 0.2
+        servo_d.value = 0.2
         sleep(1)
-        for servo in [servo_a, servo_b]:
-            servo.mid()    # Move the servo to its middle position
-        for servo in [servo_c, servo_d]:
-            servo.value = 0.4    # Move the servo to a different position
+        servo_a.value = 0.0
+        servo_b.value = 0.0
+        servo_c.value = 0.4
+        servo_d.value = 0.4
         sleep(1)
+        
 except KeyboardInterrupt:  # This will catch the interrupt and move to the cleanup code
     pass
 
