@@ -13,10 +13,10 @@ try:
     while True:  # This will keep the servo sweep running until the process is interrupted
         # Move the servos back and forth
         for servo in [servo_a, servo_b]:
-            servo.value = -1    # Move the servo to its minimum position
+            servo.value = 0    # Move the servo to its minimum position
             sleep(1)
         for servo in [servo_c, servo_d]:
-            servo.value = 1    # Move the servo to its minimum position
+            servo.value = 0    # Move the servo to its minimum position
             sleep(1)
         # for servo in [servo_a, servo_b, servo_c, servo_d]:
         #     servo.value = 0.6    # Move the servo to its minimum position
