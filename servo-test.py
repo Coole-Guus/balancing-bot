@@ -14,10 +14,15 @@ try:
         # Move the servos back and forth
         for servo in [servo_a, servo_b]:
             servo.value = 0    # Move the servo to its minimum position
-            sleep(1)
         for servo in [servo_c, servo_d]:
             servo.value = 0    # Move the servo to its minimum position
-            sleep(1)
+        sleep(1)
+        for servo in [servo_a, servo_b]:
+            servo.value = 0.1    # Move the servo to its minimum position
+        for servo in [servo_c, servo_d]:
+            servo.value = -0.1    # Move the servo to its minimum position
+        sleep(1)
+        
         # for servo in [servo_a, servo_b, servo_c, servo_d]:
         #     servo.value = 0.6    # Move the servo to its minimum position
         #     sleep(1)
