@@ -13,19 +13,21 @@ try:
     while True:  # This will keep the servo sweep running until the process is interrupted
         # Move the servos back and forth
         for servo in [servo_a, servo_b]:
-            servo.value = 0.2    # Move the servo to its minimum position
+            servo.value = 0.4    # Move the servo to its maximum position
         for servo in [servo_c, servo_d]:
             servo.value = 0.2    # Move the servo to its minimum position
         sleep(1)
         for servo in [servo_a, servo_b]:
-            servo.mid()    # Move the servo to its minimum position
+            servo.mid()    # Move the servo to its middle position
         for servo in [servo_c, servo_d]:
-            servo.value = 0.4    # Move the servo to its minimum position
+            servo.value = 0.4    # Move the servo to a different position
         sleep(1)
-        
-        # for servo in [servo_a, servo_b, servo_c, servo_d]:
-        #     servo.value = 0.6    # Move the servo to its minimum position
-        #     sleep(1)
 except KeyboardInterrupt:  # This will catch the interrupt and move to the cleanup code
     pass
+
+finally:
+    # Disable all servos
+    for servo in [servo_a, servo_b, servo_c, servo_d]:
+        servo.detach()
+
 pause()  # Wait for an interrupt signal (like Ctrl+C)
