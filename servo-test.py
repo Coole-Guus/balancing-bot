@@ -3,16 +3,20 @@ from gpiozero import Servo
 from time import sleep   # Imports sleep (aka wait or pause) into the program
 from signal import pause
 
-# Set up pin 12 for Servo
-servo = Servo(12)
+# Set up pins for Servos
+servo_a = Servo(12)
+servo_b = Servo(32)
+servo_c = Servo(33)
+servo_d = Servo(35)
 
 try:
     while True:  # This will keep the servo sweep running until the process is interrupted
-        # Move the servo back and forth
-        servo.min()    # Move the servo to its minimum position
-        sleep(1)       # Wait 1 second
-        servo.max()    # Move the servo to its maximum position
-        sleep(1)
+        # Move the servos back and forth
+        for servo in [servo_a, servo_b, servo_c, servo_d]:
+            servo.min()    # Move the servo to its minimum position
+            sleep(1)       # Wait 1 second
+            servo.max()    # Move the servo to its maximum position
+            sleep(1)
 except KeyboardInterrupt:  # This will catch the interrupt and move to the cleanup code
     pass
 
