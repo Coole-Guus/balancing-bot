@@ -18,9 +18,9 @@ try:
             servo.value = 0    # Move the servo to its minimum position
         sleep(1)
         for servo in [servo_a, servo_b]:
-            servo.value = 0.1    # Move the servo to its minimum position
+            servo.value = 0.2    # Move the servo to its minimum position
         for servo in [servo_c, servo_d]:
-            servo.value = -0.1    # Move the servo to its minimum position
+            servo.value = -0.2    # Move the servo to its minimum position
         sleep(1)
         
         # for servo in [servo_a, servo_b, servo_c, servo_d]:
