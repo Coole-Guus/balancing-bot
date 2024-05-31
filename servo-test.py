@@ -4,10 +4,10 @@ from time import sleep   # Imports sleep (aka wait or pause) into the program
 from signal import pause
 
 # Set up pins for Servos
-servo_a = Servo(12)
-servo_b = Servo(32)
-servo_c = Servo(33)
-servo_d = Servo(35)
+servo_a = Servo(18)  # BCM equivalent of physical pin 12
+servo_b = Servo(12)  # BCM equivalent of physical pin 32
+servo_c = Servo(13)  # BCM equivalent of physical pin 33
+servo_d = Servo(19)  # BCM equivalent of physical pin 35
 
 try:
     while True:  # This will keep the servo sweep running until the process is interrupted
