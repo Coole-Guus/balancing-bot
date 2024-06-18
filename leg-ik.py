@@ -158,7 +158,7 @@ min = 70
 max = 120
 
 def changeHeight(newVal: float, oldVal: float):
-    if newVal < oldVal:
+    if newVal - oldVal > 0:
         for a in range(oldVal*10, newVal*10, 1):
             b = a/10
             leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*b, 0)
