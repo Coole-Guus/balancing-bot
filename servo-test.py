@@ -48,5 +48,5 @@ def servo4():
 while True:
     servo1()
     servo2()
-    # servo3()
-    # servo4()
+    servo3()
+    servo4()
