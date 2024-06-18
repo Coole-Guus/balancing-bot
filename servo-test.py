@@ -2,7 +2,6 @@ from adafruit_servokit import ServoKit
 from time import sleep
 kit = ServoKit(channels=16)
 
-
 def servo1():
     # for a in range(80,100):
         kit.servo[10].angle = 90
@@ -40,6 +39,7 @@ def servo4():
     #     sleep(0.008)
         
         
+# Servo 11: lower left leg
 # Servo 10: upper left leg  
 # Servo 14: lower right leg
 # Servo 15: upper right leg
