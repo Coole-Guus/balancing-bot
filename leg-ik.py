@@ -160,7 +160,7 @@ while True:
         leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
         setServo(LeftLower, leftLowerValue)
         setServo(LeftUpper, leftUpperValue)
-        revCalculateLegJointsInDeg
+        print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
         leftLowerValue, leftUpperValue, unused = revCalculateLegJointsInDeg(0, -1*a, 0)
         setServo(RightLower, leftLowerValue)
         setServo(RightUpper, leftUpperValue)
@@ -169,7 +169,7 @@ while True:
         leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
         setServo(LeftLower, leftLowerValue)
         setServo(LeftUpper, leftUpperValue)
-        revCalculateLegJointsInDeg
+        print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
         leftLowerValue, leftUpperValue, unused = revCalculateLegJointsInDeg(0, -1*a, 0)
         setServo(RightLower, leftLowerValue)
         setServo(RightUpper, leftUpperValue)
