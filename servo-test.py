@@ -14,11 +14,11 @@ def servo1():
         
 def servo2():
     for a in range(80,100):
-        kit.servo[9].angle = a
+        kit.servo[11].angle = a
         sleep(0.008)
         
     for a in range(100,80,-1):
-        kit.servo[9].angle = a
+        kit.servo[11].angle = a
         sleep(0.008)
         
 def servo3():
@@ -42,10 +42,11 @@ def servo4():
         
 # Servo 10: upper left leg
 # Servo 14: lower right leg
+# Servo 15: upper right leg
 
 
 while True:
     # servo1()
-    # servo2()
+    servo2()
     # servo3()
-    servo4()
+    # servo4()
