@@ -157,26 +157,37 @@ def setServo(servo: int, angle: float):
 min = 70
 max = 120
 
+def changeHeight(newVal: int, oldVal: int):
+     for a in range(oldVal, newVal, 0.1):
+        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
+        setServo(LeftLower, leftLowerValue)
+        setServo(LeftUpper, leftUpperValue)
+        setServo(RightLower, 180 - leftLowerValue)
+        setServo(RightUpper, 180 - leftUpperValue)
+        sleep(0.008)
+
 while True:
+    changeHeight(120, 70)
+    changeHeight(70, 120)
     # print("up")
-    for a in range(min,max):
-        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
-        # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
-        setServo(LeftLower, leftLowerValue)
-        setServo(LeftUpper, leftUpperValue)
-        # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
-        setServo(RightLower, 180 - leftLowerValue)
-        setServo(RightUpper, 180 - leftUpperValue)
-        sleep(0.06)
-    print("down")
-    for a in range(max,min,-1):
-        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
-        # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
-        setServo(LeftLower, leftLowerValue)
-        setServo(LeftUpper, leftUpperValue)
-        setServo(RightLower, 180 - leftLowerValue)
-        setServo(RightUpper, 180 - leftUpperValue)
-        sleep(0.06)
+    # for a in range(min,max):
+    #     leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
+    #     # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
+    #     setServo(LeftLower, leftLowerValue)
+    #     setServo(LeftUpper, leftUpperValue)
+    #     # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
+    #     setServo(RightLower, 180 - leftLowerValue)
+    #     setServo(RightUpper, 180 - leftUpperValue)
+    #     sleep(0.06)
+    # print("down")
+    # for a in range(max,min,-1):
+    #     leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
+    #     # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
+    #     setServo(LeftLower, leftLowerValue)
+    #     setServo(LeftUpper, leftUpperValue)
+    #     setServo(RightLower, 180 - leftLowerValue)
+    #     setServo(RightUpper, 180 - leftUpperValue)
+    #     sleep(0.06)
     # for a in range(90,120):
     #     leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
     #     setServo(RightLower, leftLowerValue)
