@@ -133,8 +133,8 @@ def revCalculateLegJointsInDeg(x, y, z):
     lowerLegAngle = lowerLegAngle - diffUpperLeg 
 
     #Invert upperLegAngle due to inverted motor rotation.
-    # upperLegAngle = 180 - upperLegAngle
-    lowerLegAngle = 180 - lowerLegAngle
+    upperLegAngle = 180 - upperLegAngle
+    # lowerLegAngle = 180 - lowerLegAngle
 
     #If angles are negative turn into positive values.
     #Needed because sinus and cosinus functions have possibilities in positive and negative values.
