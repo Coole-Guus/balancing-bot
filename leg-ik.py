@@ -158,8 +158,9 @@ min = 70
 max = 120
 
 def changeHeight(newVal: float, oldVal: float):
-     for a in range(oldVal, newVal, 0.1):
-        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
+     for a in range(oldVal*10, newVal*10, 1):
+        b = a/10
+        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*b, 0)
         setServo(LeftLower, leftLowerValue)
         setServo(LeftUpper, leftUpperValue)
         setServo(RightLower, 180 - leftLowerValue)
