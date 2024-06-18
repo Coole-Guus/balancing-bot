@@ -53,6 +53,11 @@ def calculateLegJointsInDeg(x, y, z):
 
     #Put leg offset logic here
     #something like: y = y + lowerLegOffset
+    if (y == 0):
+        y = 0.00001
+  
+    if (x == 0):
+        x = 0.00001
 
     #Different calculation incase of no Z offset.
     if (z == 0):
@@ -100,10 +105,16 @@ def setServo(servo: int, angle: float):
     
 
 while True:
-    leftLowerValue, leftUpperValue = calculateLegJointsInDeg(0, -100, 0)
-    setServo(LeftLower, leftLowerValue)
-    setServo(LeftUpper, leftUpperValue)
-    sleep(0.008)
+    for a in range(90,110):
+        leftLowerValue, leftUpperValue = calculateLegJointsInDeg(0, -1*a, 0)
+        setServo(LeftLower, leftLowerValue)
+        setServo(LeftUpper, leftUpperValue)
+        sleep(0.08)
+    for a in range(110,90,-1):
+        leftLowerValue, leftUpperValue = calculateLegJointsInDeg(0, -1*a, 0)
+        setServo(LeftLower, leftLowerValue)
+        setServo(LeftUpper, leftUpperValue)
+        sleep(0.08)
     # servo1()
     # servo2()
     # servo3()
