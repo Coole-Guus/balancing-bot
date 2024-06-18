@@ -156,6 +156,7 @@ def setServo(servo: int, angle: float):
     
 
 while True:
+    print("up")
     for a in range(90,110):
         leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
         setServo(LeftLower, leftLowerValue)
@@ -164,7 +165,8 @@ while True:
         leftLowerValue, leftUpperValue, unused = revCalculateLegJointsInDeg(0, -1*a, 0)
         setServo(RightLower, leftLowerValue)
         setServo(RightUpper, leftUpperValue)
-        sleep(0.03)
+        sleep(0.06)
+    print("down")
     for a in range(110,90,-1):
         leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
         setServo(LeftLower, leftLowerValue)
@@ -173,7 +175,7 @@ while True:
         leftLowerValue, leftUpperValue, unused = revCalculateLegJointsInDeg(0, -1*a, 0)
         setServo(RightLower, leftLowerValue)
         setServo(RightUpper, leftUpperValue)
-        sleep(0.03)
+        sleep(0.06)
     # for a in range(90,120):
     #     leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
     #     setServo(RightLower, leftLowerValue)
