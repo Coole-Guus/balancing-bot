@@ -156,26 +156,27 @@ def setServo(servo: int, angle: float):
 
 min = 70
 max = 120
+precision = 100
 
 def changeHeight(newVal: float, oldVal: float):
     if newVal - oldVal > 0:
-        for a in range(oldVal*10, newVal*10, 1):
-            b = a/10
+        for a in range(oldVal*precision, newVal*precision, 1):
+            b = a/precision
             leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*b, 0)
             setServo(LeftLower, leftLowerValue)
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
             setServo(RightUpper, 180 - leftUpperValue)
-            sleep(0.008)
+            sleep(0.8/precision)
     else:
-        for a in range(oldVal*10, newVal*10, -1):
-            b = a/10
+        for a in range(oldVal*precision, newVal*precision, -1):
+            b = a/precision
             leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*b, 0)
             setServo(LeftLower, leftLowerValue)
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
             setServo(RightUpper, 180 - leftUpperValue)
-            sleep(0.008)
+            sleep(0.8/precision)
 
 while True:
     changeHeight(120, 70)
