@@ -122,6 +122,8 @@ def revCalculateLegJointsInDeg(x, y, z):
     upperLegAngle = math.atan(s/x)-math.atan((upperLeg*math.sin(lowerLegAngle))/(lowerLeg+upperLeg*math.cos(lowerLegAngle)))
     
     #Radians to degrees + fysical offsets.
+    print("UpperLegAngle: ", upperLegAngle, "LowerLegAngle: ", lowerLegAngle, "ShoulderLegAngle: ", shoulderLegAngle)
+    
     upperLegAngle = 225 + (((upperLegAngle*180)/math.pi) * -1)
     lowerLegAngle = 180 - (((lowerLegAngle*180)/math.pi) * -1)
     shoulderLegAngle = 180 + ((shoulderLegAngle*180)/math.pi)
