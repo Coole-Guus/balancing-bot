@@ -22,22 +22,22 @@ def servo2():
     #     sleep(0.008)
         
 def servo3():
-    for a in range(80,100):
-        kit.servo[14].angle = a
-        sleep(0.008)
+    # for a in range(80,100):
+        kit.servo[14].angle = 90
+    #     sleep(0.008)
         
-    for a in range(100,80,-1):
-        kit.servo[14].angle = a
-        sleep(0.008)
+    # for a in range(100,80,-1):
+    #     kit.servo[14].angle = a
+    #     sleep(0.008)
         
 def servo4():
-    for a in range(80,100):
-        kit.servo[15].angle = a
-        sleep(0.008)
+    # for a in range(80,100):
+        kit.servo[15].angle = 90
+    #     sleep(0.008)
         
-    for a in range(100,80,-1):
-        kit.servo[15].angle = a
-        sleep(0.008)
+    # for a in range(100,80,-1):
+    #     kit.servo[15].angle = a
+    #     sleep(0.008)
         
         
 # Servo 10: upper left leg  
