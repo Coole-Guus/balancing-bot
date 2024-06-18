@@ -41,9 +41,11 @@ def servo4():
         
         
 # Servo 10: upper left leg
-        
+# Servo 14: lower right leg
+
+
 while True:
     # servo1()
     # servo2()
-    servo3()
-    # servo4()
+    # servo3()
+    servo4()
