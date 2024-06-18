@@ -160,7 +160,7 @@ max = 120
 while True:
     # print("up")
     for a in range(min,max):
-        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(10, -1*a, 0)
+        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
         # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
         setServo(LeftLower, leftLowerValue)
         setServo(LeftUpper, leftUpperValue)
@@ -170,7 +170,7 @@ while True:
         sleep(0.06)
     print("down")
     for a in range(max,min,-1):
-        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(10, -1*a, 0)
+        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
         # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
         setServo(LeftLower, leftLowerValue)
         setServo(LeftUpper, leftUpperValue)
