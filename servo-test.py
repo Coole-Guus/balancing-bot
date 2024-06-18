@@ -40,7 +40,7 @@ def servo4():
         sleep(0.008)
         
         
-# Servo 10: upper left leg
+# Servo 10: upper left leg  
 # Servo 14: lower right leg
 # Servo 15: upper right leg
 
