@@ -168,7 +168,7 @@ def changeHeight(newVal: float, oldVal: float):
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
             setServo(RightUpper, 180 - leftUpperValue)
-            sleep(timeQuantum/precision)
+            # sleep(timeQuantum/precision)
     else:
         for a in range(oldVal*precision, newVal*precision, -1):
             b = a/precision
@@ -177,7 +177,7 @@ def changeHeight(newVal: float, oldVal: float):
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
             setServo(RightUpper, 180 - leftUpperValue)
-            sleep(timeQuantum/precision)
+            # sleep(timeQuantum/precision)
 
 while True:
     changeHeight(120, 70)
