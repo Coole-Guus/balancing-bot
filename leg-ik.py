@@ -156,8 +156,7 @@ def setServo(servo: int, angle: float):
 
 min = 70
 max = 120
-precision = 10
-timeQuantum = 0.0001
+precision = 8
 
 def changeHeight(newVal: float, oldVal: float):
     if newVal - oldVal > 0:
