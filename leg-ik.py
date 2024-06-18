@@ -167,7 +167,7 @@ def changeHeight(newVal: float, oldVal: float):
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
             setServo(RightUpper, 180 - leftUpperValue)
-            sleep(0.8/precision)
+            sleep(0.008)
     else:
         for a in range(oldVal*precision, newVal*precision, -1):
             b = a/precision
@@ -176,7 +176,7 @@ def changeHeight(newVal: float, oldVal: float):
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
             setServo(RightUpper, 180 - leftUpperValue)
-            sleep(0.8/precision)
+            sleep(0.008)
 
 while True:
     changeHeight(120, 70)
