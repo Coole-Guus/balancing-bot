@@ -155,11 +155,13 @@ def revCalculateLegJointsInDeg(x, y, z):
 
 def setServo(servo: int, angle: float):
     kit.servo[servo].angle = angle
-    
+
+min = 70
+max = 120
 
 while True:
     # print("up")
-    for a in range(90,110):
+    for a in range(min,max):
         leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
         # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
         setServo(LeftLower, leftLowerValue)
@@ -170,7 +172,7 @@ while True:
         setServo(RightUpper, 180 - leftUpperValue)
         sleep(0.06)
     print("down")
-    for a in range(110,90,-1):
+    for a in range(max,min,-1):
         leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
         # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
         setServo(LeftLower, leftLowerValue)
