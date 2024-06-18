@@ -40,8 +40,10 @@ def servo4():
         sleep(0.008)
         
         
+# Servo 10: upper left leg
+        
 while True:
-    servo1()
-    # servo2()
+    # servo1()
+    servo2()
     # servo3()
     # servo4()
