@@ -1,6 +1,8 @@
 from adafruit_servokit import ServoKit
 import math
 from time import sleep
+import mpu6050
+
 kit = ServoKit(channels=16)
 
 LeftLower = 10
@@ -178,45 +180,22 @@ def changeHeight(newVal: float, oldVal: float):
             setServo(RightUpper, 180 - leftUpperValue)
             # sleep(timeQuantum/precision)
 
+def read_sensor_data():
+    accelerometer_data = mpu6050.get_accel_data()
+    gyroscope_data = mpu6050.get_gyro_data()
+    temperature = mpu6050.get_temp()
+
+    return accelerometer_data, gyroscope_data, temperature
+
 while True:
-    changeHeight(120, 70)
-    changeHeight(70, 120)
-    # print("up")
-    # for a in range(min,max):
-    #     leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
-    #     # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
-    #     setServo(LeftLower, leftLowerValue)
-    #     setServo(LeftUpper, leftUpperValue)
-    #     # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
-    #     setServo(RightLower, 180 - leftLowerValue)
-    #     setServo(RightUpper, 180 - leftUpperValue)
-    #     sleep(0.06)
-    # print("down")
-    # for a in range(max,min,-1):
-    #     leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*a, 0)
-    #     # print("LeftLower: ", leftLowerValue, "LeftUpper: ", leftUpperValue)
-    #     setServo(LeftLower, leftLowerValue)
-    #     setServo(LeftUpper, leftUpperValue)
-    #     setServo(RightLower, 180 - leftLowerValue)
-    #     setServo(RightUpper, 180 - leftUpperValue)
-    #     sleep(0.06)
-    # for a in range(90,120):
-    #     leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
-    #     setServo(RightLower, leftLowerValue)
-    #     setServo(RightUpper, leftUpperValue)
-    #     sleep(0.03)
-    # for a in range(110,90,-1):
-    #     leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*a, 0)
-    #     setServo(RightLower, leftLowerValue)
-    #     setServo(RightUpper, leftUpperValue)
-    #     sleep(0.03)
-    # leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -100, 0)
-    # setServo(LeftLower, leftLowerValue)
-    # setServo(LeftUpper, leftUpperValue)
-    # setServo(RightLower, 180-leftLowerValue)
-    # setServo(RightUpper, 180-leftUpperValue)
-    # sleep(0.03)
-    # servo1()
-    # servo2()
-    # servo3()
-    # servo4()
+    # changeHeight(120, 70)
+    # changeHeight(70, 120)
+        # Read the sensor data
+    accelerometer_data, gyroscope_data, temperature = read_sensor_data()
+    # Print the sensor data
+    print("Accelerometer data:", accelerometer_data)
+    print("Gyroscope data:", gyroscope_data)
+    print("Temp:", temperature)
+    sleep(1)
+
+    
