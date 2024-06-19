@@ -3,6 +3,8 @@ import math
 from time import sleep
 import mpu6050
 
+mpu6050 = mpu6050.mpu6050(0x68)
+
 kit = ServoKit(channels=16)
 
 LeftLower = 10
