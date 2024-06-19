@@ -184,20 +184,17 @@ def changeHeight(newVal: float, oldVal: float):
 
 def read_sensor_data():
     accelerometer_data = mpu6050.get_accel_data()
-    gyroscope_data = mpu6050.get_gyro_data()
-    temperature = mpu6050.get_temp()
+    # gyroscope_data = mpu6050.get_gyro_data()
+    # temperature = mpu6050.get_temp()
 
-    return accelerometer_data, gyroscope_data, temperature
+    return accelerometer_data['x']
 
 while True:
     # changeHeight(120, 70)
     # changeHeight(70, 120)
         # Read the sensor data
-    accelerometer_data, gyroscope_data, temperature = read_sensor_data()
-    # Print the sensor data
-    print("Accelerometer data:", accelerometer_data)
-    print("Gyroscope data:", gyroscope_data)
-    print("Temp:", temperature)
+    accelerometer_x_data = read_sensor_data()
+    print("Accelerometer data:", accelerometer_x_data)
     sleep(1)
 
     
