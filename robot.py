@@ -1,4 +1,5 @@
 from time import sleep
+from numpy import interp
 
 import wheels
 import legs
