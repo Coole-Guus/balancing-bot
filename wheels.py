@@ -62,6 +62,7 @@ def move_stepper(timeSlice, speed):
     totalSteps = int(maxSteps * (speed / 100))
 
     sleepTime = (timeSlice / totalSteps) / 2
+    remainingTime = timeSlice - (totalSteps * sleepTime * 2)
     sleepTime = round(sleepTime, 5)
     print(f"Speed: {speed}, Total Steps: {totalSteps}, Sleep Time: {sleepTime}")
     
@@ -77,6 +78,7 @@ def move_stepper(timeSlice, speed):
         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.LOW)
         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.LOW)
         sleep(sleepTime)  # Adjust this delay as needed
+    sleep(remainingTime)
     
 def enable_motors():
     ENABLE_R and GPIO.output(R_EN_PIN, GPIO.LOW)
