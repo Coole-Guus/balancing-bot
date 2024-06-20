@@ -11,8 +11,8 @@ from time import sleep
 # step = 16
 # dir = 18
 
-ENABLE_L = True
-ENABLE_R = False
+ENABLE_L = False
+ENABLE_R = True
 
 
 # Define the pins
@@ -53,10 +53,10 @@ def move_stepper(steps, direction):
     for _ in range(steps):
         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.HIGH)
         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.HIGH)
-        sleep(0.0001)  # Adjust this delay as needed
+        sleep(0.0005)  # Adjust this delay as needed
         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.LOW)
         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.LOW)
-        sleep(0.0001)  # Adjust this delay as needed
+        sleep(0.0005)  # Adjust this delay as needed
 
     # # Disable the motor
     # sleep(7)
