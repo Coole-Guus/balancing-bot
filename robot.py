@@ -10,9 +10,8 @@ def setup():
 
 def loop():
     # accelerometer_x_data = mpu6050.read_sensor_data()
-    for a in range(0, 100, 10):
-        for _ in range(10):
-            wheels.move_stepper(a, 1)
+    for a in range(0, 100, 1):
+        wheels.move_stepper(a, 1)
 
 def main():
     setup()
