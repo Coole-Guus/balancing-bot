@@ -46,7 +46,10 @@ def move_stepper(steps, direction):
     # Disable the motor
     en.on()
 
+while True:
+    move_stepper(200, 1)  # Move 200 steps in one direction
+
 # Move the stepper motor
-move_stepper(200, 1)  # Move 200 steps in one direction
-sleep(1)  # Wait for a second
-move_stepper(200, 0)  # Move 200 steps in the other direction
+# move_stepper(200, 1)  # Move 200 steps in one direction
+# sleep(1)  # Wait for a second
+# move_stepper(200, 0)  # Move 200 steps in the other direction
