@@ -52,7 +52,7 @@ def move_stepper(timeSlice, speed):
     
     direction = "forward" if speed > 0 else "backward"
     speed = abs(speed)
-    maxSpeed = 0.001
+    maxSpeed = 0.0001
     
 
     
