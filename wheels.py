@@ -54,7 +54,7 @@ def move_stepper(timeSlice, speed, direction):
         sleep(timeSlice)
         return
     
-    speed = speed / 2
+    speed = speed / timeSlice*200
     
     totalSteps = speed / timeSlice
     sleepTime = (timeSlice / totalSteps) / 2
