@@ -6,16 +6,19 @@ import wheels
 import legs
 import mpu6050
 
-
-
 def main():
     legs.changeHeight(110, 110)
     wheels.enable_motors()
     
-    timeSlice = 0.05
+    timeSlice = 0.005
     previousTime = time.time()
     gyroAngle = 0
     previousAngle = 0
+    targetAngle = -0.88
+    
+    Kp = 40
+    Ki = 0.05
+    Kd = 40
     
     try:
         while True:
@@ -28,8 +31,16 @@ def main():
             gyroAngle = gyroAngle + grate*iterationTime/1000
 
             currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
-            previousAngle = currentAngle
-            print(f"X: {currentAngle}")
+            
+            error = currentAngle - targetAngle
+            errorSum = errorSum + error
+            errorSum = constrain(errorSum, -300, 300)
+            
+            motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
+            previousTime = currentAngle
+            
+            print(f"Current Angle: {currentAngle}, Motor Power: {motorPower}")
+            
             time.sleep(timeSlice)
 
     except KeyboardInterrupt:
@@ -37,3 +48,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def constrain(val, min_val, max_val):
+    return min(max_val, max(min_val, val))
