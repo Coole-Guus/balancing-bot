@@ -8,7 +8,7 @@ mpu = adafruit_mpu6050.MPU6050(i2c)
 def read_accel():
     return mpu.acceleration
 
-def read_gyro_y():
+def read_gyro_x():
     return mpu.gyro[0]
 
 def getAngle():
