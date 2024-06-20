@@ -14,19 +14,29 @@ from time import sleep
 ENABLE_L = True
 ENABLE_R = True
 
+# # Define the pins
+R_EN_PIN = 18  # Enable pin
+R_STEP_PIN = 23  # Step pin
+R_DIR_PIN = 24  # Direction pin
 
-# Define the pins
-R_EN_PIN = 12  # Enable pin
-R_STEP_PIN = 16  # Step pin
-R_DIR_PIN = 18  # Direction pin
+
+# # Define the pins
+L_EN_PIN = 17  # Enable pin
+L_STEP_PIN = 27  # Step pin
+L_DIR_PIN = 22  # Direction pin
+
+# # Define the pins
+# R_EN_PIN = 12  # Enable pin
+# R_STEP_PIN = 16  # Step pin
+# R_DIR_PIN = 18  # Direction pin
 
 
-# Define the pins
-L_EN_PIN = 11  # Enable pin
-L_STEP_PIN = 13  # Step pin
-L_DIR_PIN = 15  # Direction pin
+# # Define the pins
+# L_EN_PIN = 11  # Enable pin
+# L_STEP_PIN = 13  # Step pin
+# L_DIR_PIN = 15  # Direction pin
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
 # Create DigitalOutputDevice instances for each pin
 GPIO.setup(R_EN_PIN, GPIO.OUT)
