@@ -1,18 +1,26 @@
 from time import sleep
 
+import wheels
 import legs
 import mpu6050
 
-while True:
-    # changeHeight(120, 70)
-    legs.changeHeight(70, 120)
-    # Read the sensor data
-    
-    accelerometer_x_data = mpu6050.read_sensor_data()
-    # -10 max forward lean, 0 is straight, 10 is max backward lean
-    # might have to calibrate pure up since body is slanted forward.
-    # like minimize 
-    print("Accelerometer data:", accelerometer_x_data)
-    sleep(1)
+def setup():
+    legs.changeHeight(110, 110)
+    wheels.enable_motors()
 
-    
+def loop():
+    # accelerometer_x_data = mpu6050.read_sensor_data()
+    for a in range(0, 100, 10):
+        for _ in range(10):
+            wheels.move_stepper(a, 1)
+
+def main():
+    setup()
+    try:
+        while True:
+            loop()
+    except KeyboardInterrupt:
+        wheels.disable_motors()
+
+if __name__ == "__main__":
+    main()
