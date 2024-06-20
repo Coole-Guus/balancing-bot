@@ -13,15 +13,15 @@ from time import sleep
 
 
 # Define the pins
-# EN_PIN = 12  # Enable pin
-# STEP_PIN = 16  # Step pin
-# DIR_PIN = 18  # Direction pin
+EN_PIN = 12  # Enable pin
+STEP_PIN = 16  # Step pin
+DIR_PIN = 18  # Direction pin
 
 
 # Define the pins
-EN_PIN = 11  # Enable pin
-STEP_PIN = 13  # Step pin
-DIR_PIN = 15  # Direction pin
+# EN_PIN = 11  # Enable pin
+# STEP_PIN = 13  # Step pin
+# DIR_PIN = 15  # Direction pin
 
 # Create DigitalOutputDevice instances for each pin
 en = DigitalOutputDevice(EN_PIN)
@@ -48,7 +48,7 @@ def move_stepper(steps, direction):
     en.on()
 
 while True:
-    move_stepper(2000, 1)  # Move 200 steps in one direction
+    move_stepper(2000, 0)  # Move 200 steps in one direction
 
 # Move the stepper motor
 # move_stepper(200, 1)  # Move 200 steps in one direction
