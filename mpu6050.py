@@ -9,5 +9,5 @@ def read_x_accel():
     # gyroscope_data = mpu6050.get_gyro_data()
     # temperature = mpu6050.get_temp()
     # return accelerometer_data['x']
-    print(mpu.acceleration)
+    print(mpu.acceleration[0])
     return mpu.acceleration[0]
