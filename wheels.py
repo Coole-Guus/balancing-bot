@@ -23,6 +23,8 @@ DIR_PIN = 18  # Direction pin
 # STEP_PIN = 13  # Step pin
 # DIR_PIN = 15  # Direction pin
 
+GPIO.setmode(GPIO.BOARD)
+
 # Create DigitalOutputDevice instances for each pin
 GPIO.setup(EN_PIN, GPIO.OUT)
 GPIO.setup(STEP_PIN, GPIO.OUT)
