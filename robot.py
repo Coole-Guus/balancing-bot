@@ -30,23 +30,24 @@ def main():
             iterationTime = previousTime - now
             previousTime = now
             
-            gx = mpu6050.read_gyro_x()
-            grate = numpy.interp(gx, [-32768, 32768], [-250, 250])
+            gy = mpu6050.read_gyro_y()
+            grate = numpy.interp(gy, [-32768, 32768], [-250, 250])
             
-            gyroAngle = grate*iterationTime/1000
-            currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
+            gyroAngle = gyroAngle + grate*iterationTime/1000
+            print(f"gyro angle: {gyroAngle}")
+            # currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
             
-            currentAngle = currentAngle - 270
+            # currentAngle = currentAngle - 270
             
-            error = currentAngle - targetAngle
-            errorSum = errorSum + error
-            errorSum = constrain(errorSum, -300, 300)
+            # error = currentAngle - targetAngle
+            # errorSum = errorSum + error
+            # errorSum = constrain(errorSum, -300, 300)
             
-            motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
-            previousTime = currentAngle
+            # motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
+            # previousTime = currentAngle
             
             # print(f"Current Angle: {currentAngle}, Motor Power: {motorPower}")
-            print(f"acc angle: {mpu6050.getAngle()}")
+            # print(f"acc angle: {mpu6050.getAngle()}")
             time.sleep(timeSlice)
 
     except KeyboardInterrupt:
