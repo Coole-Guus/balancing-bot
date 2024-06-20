@@ -43,14 +43,14 @@ def main():
             errorSum = errorSum + error
             errorSum = constrain(errorSum, -300, 300)
             
-            motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
+            # motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
             previousAngle = currentAngle
             
             print(f"Current Angle: {currentAngle}")
             
             motorPower = constrain(motorPower, -100, 100)
             
-            wheels.move_stepper(timeSlice, motorPower)
+            # wheels.move_stepper(timeSlice, motorPower)
             # if currentAngle > 25 or currentAngle < -25:
             #     raise Exception("Robot has fallen over")
     except KeyboardInterrupt:
