@@ -8,20 +8,8 @@ mpu = adafruit_mpu6050.MPU6050(i2c)
 def read_accel():
     return mpu.acceleration
 
-def read_gyro():
-    return mpu.gyro
-
-last_gyro_x = 0
-last_gyro_y = 0
-last_gyro_z = 0
-accumulated_angle_x = 0
-accumulated_angle_y = 0
-accumulated_angle_z = 0
-
-def correct_for_gravity(acc):
-    """Corrects accelerometer data for gravity."""
-    g = 9.81  # Acceleration due to gravity
-    return acc / g
+def read_gyro_x():
+    return mpu.gyro[0]
 
 def getAngle():
     acc = mpu.acceleration
