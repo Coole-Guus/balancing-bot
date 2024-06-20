@@ -11,7 +11,7 @@ def setup():
 
 def loop():
     xAccel = mpu6050.read_x_accel()
-    interpXAccel = interp(xAccel, [-3, 3], [-100, 100])
+    interpXAccel = interp(xAccel, [-9, 9], [-100, 100])
     if interpXAccel < 0:
         wheels.move_stepper(abs(interpXAccel), "forward")
     else:
