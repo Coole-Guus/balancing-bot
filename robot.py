@@ -32,8 +32,8 @@ def main():
             
             gx = mpu6050.read_gyro_x()
             grate = numpy.interp(gx, [-32768, 32768], [-250, 250])
-            gyroAngle = gyroAngle + grate*iterationTime/1000
-
+            
+            gyroAngle = grate*iterationTime/1000
             currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
             
             error = currentAngle - targetAngle
