@@ -46,20 +46,18 @@ GPIO.setup(L_EN_PIN, GPIO.OUT)
 GPIO.setup(L_STEP_PIN, GPIO.OUT)
 GPIO.setup(L_DIR_PIN, GPIO.OUT)
 
-iterationTime = 0.1
-
 # Function to move the stepper motor
-def move_stepper(speed, direction):
+def move_stepper(timeSlice, speed, direction):
     assert 0 <= speed <= 100, "Velocity must be between 0 and 100"
     
     if speed == 0:
-        sleep(iterationTime)
+        sleep(timeSlice)
         return
     
     speed = speed / 2
     
-    totalSteps = speed / iterationTime
-    sleepTime = (iterationTime / totalSteps) / 2
+    totalSteps = speed / timeSlice
+    sleepTime = (timeSlice / totalSteps) / 2
     sleepTime = round(sleepTime, 5)
     print(f"Speed: {speed}, Total Steps: {totalSteps}, Sleep Time: {sleepTime}")
     

@@ -4,5 +4,8 @@ import board
 i2c = board.I2C()
 mpu = adafruit_mpu6050.MPU6050(i2c)
 
-def read_x_accel():
-    return mpu.acceleration[0]
+def read_accel():
+    return mpu.acceleration
+
+def read_gyro():
+    return mpu.gyro
