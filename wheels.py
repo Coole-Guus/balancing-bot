@@ -17,9 +17,9 @@ from gpiozero import DigitalOutputDevice
 from time import sleep
 
 # Define the pins
-EN_PIN = 33  # Enable pin
-STEP_PIN = 35  # Step pin
-DIR_PIN = 37  # Direction pin
+EN_PIN = 23  # Enable pin
+STEP_PIN = 24  # Step pin
+DIR_PIN = 25  # Direction pin
 
 # Create DigitalOutputDevice instances for each pin
 en = DigitalOutputDevice(EN_PIN)
