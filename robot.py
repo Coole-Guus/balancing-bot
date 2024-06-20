@@ -6,10 +6,6 @@ import wheels
 import legs
 import mpu6050
 
-def setup():
-    legs.changeHeight(110, 110)
-    wheels.enable_motors()
-
 K = 0.98
 K1 = 1 - K
 
@@ -38,6 +34,21 @@ last_x = x_rotation(aTempX, aTempY, aTempZ)
 
 gyro_offset_x = gTempX
 
+def setup():
+    legs.changeHeight(110, 110)
+    wheels.enable_motors()
+    
+    accel_data = mpu6050.read_accel()
+    gyro_data = mpu6050.read_gyro()
+        
+    aTempX = accel_data[0]
+    aTempY = accel_data[1]
+    aTempZ = accel_data[2]
+    gTempX = gyro_data[0]
+
+    last_x = x_rotation(aTempX, aTempY, aTempZ)
+
+    gyro_offset_x = gTempX
 
 def loop():
     accel_data = mpu6050.read_accel()
