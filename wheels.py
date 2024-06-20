@@ -65,7 +65,7 @@ def move_stepper(speed, direction):
     
     # SET DIRECTION
     ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
-    ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
+    ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.LOW if direction else GPIO.HIGH)
     
     # Move the specified number of steps
     for _ in range(int(totalSteps)):
