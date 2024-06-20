@@ -56,8 +56,10 @@ def move_stepper(speed, direction):
         sleep(iterationTime)
         return
     
+    speed = speed / 10
+    
     totalSteps = speed / iterationTime
-    sleepTime = (totalSteps / iterationTime) / 2
+    sleepTime = (iterationTime / totalSteps) / 2
     
     print(f"Speed: {speed}, Total Steps: {totalSteps}, Sleep Time: {sleepTime}")
     
