@@ -12,17 +12,39 @@ from TMC_2209._TMC_2209_GPIO_board import Board
 # step = 35
 # dir = 37
 
-tmc = TMC_2209(11, 13, 15, serialport="/dev/ttyAMA0")
-tmc.set_movement_abs_rel(MovementAbsRel.RELATIVE)
 
-tmc.set_direction_reg(False)
-tmc.set_current(300)
-tmc.set_interpolation(True)
-tmc.set_spreadcycle(False)
-tmc.set_microstepping_resolution(2)
-tmc.set_internal_rsense(False)
+from gpiozero import DigitalOutputDevice
+from time import sleep
 
-tmc.test_dir_step_en()
+# Define the pins
+EN_PIN = 11  # Enable pin
+STEP_PIN = 13  # Step pin
+DIR_PIN = 15  # Direction pin
 
-tmc.set_motor_enabled(False)
+# Create DigitalOutputDevice instances for each pin
+en = DigitalOutputDevice(EN_PIN)
+step = DigitalOutputDevice(STEP_PIN)
+dir = DigitalOutputDevice(DIR_PIN)
 
+# Function to move the stepper motor
+def move_stepper(steps, direction):
+    # Set direction
+    dir.value = direction
+
+    # Enable the motor
+    en.off()
+
+    # Move the specified number of steps
+    for _ in range(steps):
+        step.on()
+        sleep(0.001)  # Adjust this delay as needed
+        step.off()
+        sleep(0.001)  # Adjust this delay as needed
+
+    # Disable the motor
+    en.on()
+
+# Move the stepper motor
+move_stepper(200, 1)  # Move 200 steps in one direction
+sleep(1)  # Wait for a second
+move_stepper(200, 0)  # Move 200 steps in the other direction
