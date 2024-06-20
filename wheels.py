@@ -30,6 +30,7 @@ dir = DigitalOutputDevice(DIR_PIN)
 
 # Function to move the stepper motor
 def move_stepper(steps, direction):
+    print("Moving the stepper motor")
     # Set direction
     dir.value = direction
     # dir.on()
@@ -46,7 +47,10 @@ def move_stepper(steps, direction):
 
     # Disable the motor
     sleep(1)
+    print("Disabling the motor")
     en.on()
+    sleep(1)
+
 
 while True:
     move_stepper(2000, 0)  # Move 200 steps in one direction
