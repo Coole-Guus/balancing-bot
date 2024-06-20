@@ -8,18 +8,17 @@ from TMC_2209._TMC_2209_GPIO_board import Board
 # dir = 15
 
 # stepper right pinout:
-# en = 33
-# step = 35
-# dir = 37
-
+# en = 12
+# step = 16
+# dir = 18
 
 from gpiozero import DigitalOutputDevice
 from time import sleep
 
 # Define the pins
-EN_PIN = 33  # Enable pin
-STEP_PIN = 35  # Step pin
-DIR_PIN = 37  # Direction pin
+EN_PIN = 12  # Enable pin
+STEP_PIN = 16  # Step pin
+DIR_PIN = 18  # Direction pin
 
 # Create DigitalOutputDevice instances for each pin
 en = DigitalOutputDevice(EN_PIN)
