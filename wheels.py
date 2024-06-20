@@ -54,8 +54,9 @@ def move_stepper(timeSlice, speed):
     speed = abs(speed)
     maxSpeed = 0.0001
     
-    speed = speed * 1.2
+    speed = speed * 2
 
+    max(speed, 100)
     
     maxSteps = timeSlice / maxSpeed
     totalSteps = int(maxSteps * (speed / 100))
