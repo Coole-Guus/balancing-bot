@@ -11,6 +11,9 @@ from time import sleep
 # step = 16
 # dir = 18
 
+ENABLE_L = False
+ENABLE_R = False
+
 
 # Define the pins
 R_EN_PIN = 12  # Enable pin
@@ -40,26 +43,26 @@ def move_stepper(steps, direction):
     # print("Moving the stepper motor")
     
     # SET DIRECTION
-    GPIO.output(R_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
-    GPIO.output(L_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
+    ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
+    ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
     # ENABLE THE MOTOR
-    GPIO.output(R_EN_PIN, GPIO.LOW)
-    GPIO.output(L_EN_PIN, GPIO.LOW)
+    ENABLE_R and GPIO.output(R_EN_PIN, GPIO.LOW)
+    ENABLE_L and GPIO.output(L_EN_PIN, GPIO.LOW)
     
     # Move the specified number of steps
     for _ in range(steps):
-        GPIO.output(R_STEP_PIN, GPIO.HIGH)
-        GPIO.output(L_STEP_PIN, GPIO.HIGH)
+        ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.HIGH)
+        ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.HIGH)
         sleep(0.0001)  # Adjust this delay as needed
-        GPIO.output(R_STEP_PIN, GPIO.LOW)
-        GPIO.output(L_STEP_PIN, GPIO.LOW)
+        ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.LOW)
+        ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.LOW)
         sleep(0.0001)  # Adjust this delay as needed
 
     # # Disable the motor
     # sleep(7)
     # print("Disabling the motor")
-    GPIO.output(R_EN_PIN, GPIO.HIGH)
-    GPIO.output(L_EN_PIN, GPIO.HIGH)
+    ENABLE_R and GPIO.output(R_EN_PIN, GPIO.HIGH)
+    ENABLE_L and GPIO.output(L_EN_PIN, GPIO.HIGH)
     # sleep(7)
 
 
