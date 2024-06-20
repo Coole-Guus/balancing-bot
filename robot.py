@@ -62,12 +62,13 @@ def loop():
     
     #Complementary Filter
     last_x = K * (last_x + gyro_x_delta) + (K1 * rotation_x)
-    
-    interpXAccel = interp(last_x, [-9, 9], [-100, 100])
-    if interpXAccel < 0:
-        wheels.move_stepper(timeSlice, abs(interpXAccel), "forward")
-    else:
-        wheels.move_stepper(timeSlice, abs(interpXAccel), "backward")
+    print(f"X: {last_x}")
+    sleep(timeSlice)
+    # interpXAccel = interp(last_x, [-9, 9], [-100, 100])
+    # if interpXAccel < 0:
+    #     wheels.move_stepper(timeSlice, abs(interpXAccel), "forward")
+    # else:
+    #     wheels.move_stepper(timeSlice, abs(interpXAccel), "backward")
     # accelerometer_x_data = mpu6050.read_sensor_data()
     # for a in range(0, 100, 1):
     #     wheels.move_stepper(a, 1)
