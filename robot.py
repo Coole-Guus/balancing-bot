@@ -6,15 +6,17 @@ import wheels
 import legs
 import mpu6050
 
-timeSlice = 0.05
-previousTime = time.time()
-gyroAngle = 0
-previousAngle = 0
+
 
 def main():
     legs.changeHeight(110, 110)
     wheels.enable_motors()
-
+    
+    timeSlice = 0.05
+    previousTime = time.time()
+    gyroAngle = 0
+    previousAngle = 0
+    
     try:
         while True:
             now = time.time()
