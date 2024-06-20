@@ -39,14 +39,14 @@ def main():
             
             print(f"Current Angle: {currentAngle}")
             
-            # error = currentAngle - targetAngle
-            # errorSum = errorSum + error
-            # errorSum = constrain(errorSum, -300, 300)
+            error = currentAngle - targetAngle
+            errorSum = errorSum + error
+            errorSum = constrain(errorSum, -300, 300)
             
-            # motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
-            # previousTime = currentAngle
+            motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
+            previousTime = currentAngle
             
-            # print(f"Current Angle: {currentAngle}, Motor Power: {motorPower}")
+            print(f"Current Angle: {currentAngle}, Motor Power: {motorPower}")
             # print(f"acc angle: {mpu6050.getAngle()}")
             time.sleep(timeSlice)
 
