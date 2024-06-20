@@ -31,8 +31,8 @@ dir = DigitalOutputDevice(DIR_PIN)
 # Function to move the stepper motor
 def move_stepper(steps, direction):
     # Set direction
-    # dir.value = direction
-    dir.on()
+    dir.value = direction
+    # dir.on()
 
     # Enable the motor
     en.off()
