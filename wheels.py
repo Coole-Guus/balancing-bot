@@ -38,13 +38,14 @@ def move_stepper(steps, direction):
     en.off()
 
     # Move the specified number of steps
-    while True:
-        step.on()
-        sleep(0.001)  # Adjust this delay as needed
-        step.off()
-        sleep(0.001)  # Adjust this delay as needed
+    # while True:
+    #     step.on()
+    #     sleep(0.001)  # Adjust this delay as needed
+    #     step.off()
+    #     sleep(0.001)  # Adjust this delay as needed
 
     # Disable the motor
+    sleep(1)
     en.on()
 
 while True:
