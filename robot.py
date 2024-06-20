@@ -10,8 +10,12 @@ def setup():
     wheels.enable_motors()
 
 def loop():
-    mpu6050.read_x_accel()
-    sleep(1)
+    xAccel = mpu6050.read_x_accel()
+    interpXAccel = interp(xAccel, [-3, 3], [-100, 100])
+    if interpXAccel < 0:
+        wheels.move_stepper(abs(interpXAccel), "forward")
+    else:
+        wheels.move_stepper(abs(interpXAccel), "backward")
     # accelerometer_x_data = mpu6050.read_sensor_data()
     # for a in range(0, 100, 1):
     #     wheels.move_stepper(a, 1)
