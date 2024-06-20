@@ -51,7 +51,8 @@ def main():
             motorPower = constrain(motorPower, -100, 100)
             
             wheels.move_stepper(timeSlice, motorPower)
-
+            if currentAngle > 25 or currentAngle < -25:
+                raise Exception("Robot has fallen over")
     except KeyboardInterrupt:
         wheels.disable_motors()
 
