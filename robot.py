@@ -48,7 +48,7 @@ def main():
             
             print(f"Current Angle: {currentAngle}")
             time.sleep(timeSlice)
-            motorPower = constrain(motorPower, -100, 100)
+            # motorPower = constrain(motorPower, -100, 100)
             
             # wheels.move_stepper(timeSlice, motorPower)
             # if currentAngle > 25 or currentAngle < -25:
