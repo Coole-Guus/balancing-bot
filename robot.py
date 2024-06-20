@@ -30,12 +30,12 @@ def main():
             iterationTime = previousTime - now
             previousTime = now
             
-            # gy = mpu6050.read_gyro_y()
-            # grate = numpy.interp(gy, [-32768, 32768], [-250, 250])
+            gy = mpu6050.read_gyro_y()
+            grate = numpy.interp(gy, [-32768, 32768], [-250, 250])
             
-            # gyroAngle = grate*iterationTime
+            gyroAngle = grate*iterationTime
             
-            # currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
+            currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
             currentAngle = mpu6050.getAngle()
             # print(f"Current Angle: {currentAngle}")
             
