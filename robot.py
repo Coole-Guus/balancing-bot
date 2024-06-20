@@ -20,7 +20,7 @@ def main():
     targetAngle = -0.88
     errorSum = 0
     
-    Kp = 8
+    Kp = 9
     Ki = 0
     Kd = 0
     
