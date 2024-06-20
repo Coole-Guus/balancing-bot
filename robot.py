@@ -15,6 +15,7 @@ def main():
     gyroAngle = 0
     previousAngle = 0
     targetAngle = -0.88
+    errorSum = 0
     
     Kp = 40
     Ki = 0.05
