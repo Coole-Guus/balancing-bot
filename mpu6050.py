@@ -25,4 +25,4 @@ def correct_for_gravity(acc):
 
 def getAngle():
     acc = mpu.acceleration
-    return math.degrees(math.atan2(acc['x'], acc['z']))
+    return math.degrees(math.atan2(acc[0], acc[2]))
