@@ -17,7 +17,7 @@ def main():
     previousTime = time.time()
     gyroAngle = 0
     previousAngle = 0
-    targetAngle = -0.88
+    targetAngle = -3
     errorSum = 0
     
     Kp = 7
@@ -50,7 +50,7 @@ def main():
             
             motorPower = constrain(motorPower, -100, 100)
             
-            # wheels.move_stepper(timeSlice, motorPower)
+            wheels.move_stepper(timeSlice, motorPower)
             # if currentAngle > 25 or currentAngle < -25:
             #     raise Exception("Robot has fallen over")
     except KeyboardInterrupt:
