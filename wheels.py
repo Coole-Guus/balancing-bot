@@ -60,7 +60,7 @@ def move_stepper(speed, direction):
     
     totalSteps = speed / iterationTime
     sleepTime = (iterationTime / totalSteps) / 2
-    
+    sleepTime = round(sleepTime, 5)
     print(f"Speed: {speed}, Total Steps: {totalSteps}, Sleep Time: {sleepTime}")
     
     # SET DIRECTION
