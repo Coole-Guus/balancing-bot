@@ -11,8 +11,8 @@ from time import sleep
 # step = 16
 # dir = 18
 
-ENABLE_L = False
-ENABLE_R = True
+ENABLE_L = True
+ENABLE_R = False
 
 
 # Define the pins
