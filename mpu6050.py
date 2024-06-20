@@ -1,6 +1,6 @@
-import mpu6050
+from mpu6050 import mpu6050
 
-mpu = mpu6050.mpu6050(0x68)
+mpu = mpu6050(0x68)
 
 def read_sensor_data():
     accelerometer_data = mpu.get_accel_data()
