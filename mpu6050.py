@@ -13,4 +13,4 @@ def read_gyro_x():
 
 def getAngle():
     acc = mpu.acceleration
-    return math.degrees(math.atan2(acc[1], acc[2]))
+    return math.degrees(math.atan2(acc[0], acc[2]))
