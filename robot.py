@@ -9,9 +9,11 @@ def setup():
     wheels.enable_motors()
 
 def loop():
+    mpu6050.read_sensor_data()
+    sleep(1)
     # accelerometer_x_data = mpu6050.read_sensor_data()
-    for a in range(0, 100, 1):
-        wheels.move_stepper(a, 1)
+    # for a in range(0, 100, 1):
+    #     wheels.move_stepper(a, 1)
 
 def main():
     setup()

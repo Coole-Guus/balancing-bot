@@ -9,4 +9,5 @@ def read_sensor_data():
     # gyroscope_data = mpu6050.get_gyro_data()
     # temperature = mpu6050.get_temp()
     # return accelerometer_data['x']
+    print(mpu.acceleration)
     return mpu.acceleration
