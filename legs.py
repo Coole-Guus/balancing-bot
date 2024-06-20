@@ -4,12 +4,12 @@ import math
 
 kit = ServoKit(channels=16)
 
-# Servo 11: lower left leg
-# Servo 10: upper left leg  
+# Servo 10: lower left leg
+# Servo 11: upper left leg  
 # Servo 14: lower right leg
 # Servo 15: upper right leg
-LeftLower = 10
-LeftUpper = 11
+LeftLower = 11
+LeftUpper = 10
 RightLower = 14
 RightUpper = 15
 
