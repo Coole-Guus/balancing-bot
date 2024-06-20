@@ -6,6 +6,9 @@ import wheels
 import legs
 import mpu6050
 
+def constrain(val, min_val, max_val):
+    return min(max_val, max(min_val, val))
+
 def main():
     legs.changeHeight(110, 110)
     wheels.enable_motors()
@@ -49,6 +52,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-def constrain(val, min_val, max_val):
-    return min(max_val, max(min_val, val))
