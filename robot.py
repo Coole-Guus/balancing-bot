@@ -46,7 +46,7 @@ def main():
             motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
             previousAngle = currentAngle
             
-            # print(f"Current Angle: {currentAngle}, Motor Power: {motorPower}")
+            print(f"Current Angle: {currentAngle}")
             
             motorPower = constrain(motorPower, -100, 100)
             
