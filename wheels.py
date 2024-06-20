@@ -36,13 +36,15 @@ def move_stepper(steps, direction):
     # Move the specified number of steps
     for _ in range(steps):
         step.on()
-        sleep(0.001)  # Adjust this delay as needed
+        sleep(0.002)  # Adjust this delay as needed
         step.off()
-        sleep(0.001)  # Adjust this delay as needed
+        sleep(0.002)  # Adjust this delay as needed
 
     # Disable the motor
     en.on()
 
+while True:
+    move_stepper(200, 1)  # Move 200 steps in one direction 
 # Move the stepper motor
 move_stepper(200, 1)  # Move 200 steps in one direction
 sleep(1)  # Wait for a second
