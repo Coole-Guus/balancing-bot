@@ -66,7 +66,7 @@ def move_stepper(speed, direction):
     ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
     
     # Move the specified number of steps
-    for _ in range(totalSteps):
+    for _ in range(int(totalSteps)):
         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.HIGH)
         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.HIGH)
         sleep(sleepTime)  # Adjust this delay as needed
