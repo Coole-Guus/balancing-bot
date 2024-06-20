@@ -17,7 +17,7 @@ def main():
     previousTime = time.time()
     gyroAngle = 0
     previousAngle = 0
-    targetAngle = 0.88
+    targetAngle = -0.88
     errorSum = 0
     
     Kp = 5

@@ -73,14 +73,14 @@ def changeHeight(newVal: float, oldVal: float):
     if newVal - oldVal > 0:
         for a in range(oldVal*precision, newVal*precision, 1):
             b = a/precision
-            leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*b, 0)
+            leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*b, 0)
             setServo(LeftLower, leftLowerValue)
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
             setServo(RightUpper, 180 - leftUpperValue)
             # sleep(timeQuantum/precision)
     elif newVal - oldVal == 0:
-        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*newVal, 0)
+        leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*newVal, 0)
         setServo(LeftLower, leftLowerValue)
         setServo(LeftUpper, leftUpperValue)
         setServo(RightLower, 180 - leftLowerValue)
@@ -89,7 +89,7 @@ def changeHeight(newVal: float, oldVal: float):
     else:
         for a in range(oldVal*precision, newVal*precision, -1):
             b = a/precision
-            leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(20, -1*b, 0)
+            leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*b, 0)
             setServo(LeftLower, leftLowerValue)
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
