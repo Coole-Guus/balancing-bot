@@ -29,20 +29,15 @@ def x_rotation(x, y, z):
 accel_data = mpu6050.read_accel()
 gyro_data = mpu6050.read_gyro()
     
-aTempX = accel_data['x']
-aTempY = accel_data['y']
-aTempZ = accel_data['z']
-
-gTempX = gyro_data['x']
-gTempY = gyro_data['y']
-gTempZ = gyro_data['z']
+aTempX = accel_data[0]
+aTempY = accel_data[1]
+aTempZ = accel_data[2]
+gTempX = gyro_data[0]
 
 last_x = x_rotation(aTempX, aTempY, aTempZ)
-last_y = y_rotation(aTempX, aTempY, aTempZ)
 
 gyro_offset_x = gTempX
 
-gyro_total_x = (last_x) - gyro_offset_x
 
 def loop():
     accel_data = mpu6050.read_accel()
@@ -53,7 +48,6 @@ def loop():
     accelZ = accel_data[2]
 
     gyroX = gyro_data[0]
-
     gyroX -= gyro_offset_x
 
     gyro_x_delta = (gyroX * timeSlice)
