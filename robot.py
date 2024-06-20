@@ -58,7 +58,7 @@ def main():
             # print(f"X: {last_x}")
             # sleep(timeSlice)
             print(f"X: {mpu6050.getAngle()}")
-            sleep(0.2)
+            sleep(0.5)
             # interpXAccel = interp(last_x, [-5, 5], [-100, 100])
             # if interpXAccel < 0:
             #     wheels.move_stepper(timeSlice, abs(interpXAccel), "forward")
