@@ -44,7 +44,7 @@ def main():
             errorSum = constrain(errorSum, -300, 300)
             
             motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
-            previousTime = currentAngle
+            previousAngle = currentAngle
             
             print(f"Current Angle: {currentAngle}, Motor Power: {motorPower}")
             # print(f"acc angle: {mpu6050.getAngle()}")
