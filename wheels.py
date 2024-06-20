@@ -46,10 +46,10 @@ def move_stepper(steps, direction):
     #     sleep(0.001)  # Adjust this delay as needed
 
     # Disable the motor
-    sleep(1)
+    sleep(7)
     print("Disabling the motor")
     en.on()
-    sleep(1)
+    sleep(7)
 
 
 while True:
