@@ -47,8 +47,10 @@ def main():
             previousAngle = currentAngle
             
             print(f"Current Angle: {currentAngle}, Motor Power: {motorPower}")
-            # print(f"acc angle: {mpu6050.getAngle()}")
-            time.sleep(timeSlice)
+            
+            motorPower = constrain(motorPower, -100, 100)
+            
+            wheels.move_stepper(timeSlice, motorPower)
 
     except KeyboardInterrupt:
         wheels.disable_motors()
