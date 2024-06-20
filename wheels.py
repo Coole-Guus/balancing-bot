@@ -1,4 +1,4 @@
-import gpiozero
+import RPi.GPIO as GPIO
 from time import sleep
 
 # stepper left pinout:
@@ -24,42 +24,41 @@ DIR_PIN = 18  # Direction pin
 # DIR_PIN = 15  # Direction pin
 
 # Create DigitalOutputDevice instances for each pin
-en = gpiozero.LED(EN_PIN)
-step = gpiozero.LED(STEP_PIN)
-dir = gpiozero.LED(DIR_PIN)
+GPIO.setup(EN_PIN, GPIO.OUT)
+GPIO.setup(STEP_PIN, GPIO.OUT)
+GPIO.setup(DIR_PIN, GPIO.OUT)
 
 # Function to move the stepper motor
-# def move_stepper(steps, direction):
+def move_stepper(steps, direction):
     # print("Moving the stepper motor")
-    # # Set direction
-    # dir.value = direction
-    # # dir.on()
-
-    # # Enable the motor
-    # en.off()
-
-    # # Move the specified number of steps
-    # # while True:
-    # #     step.on()
-    # #     sleep(0.001)  # Adjust this delay as needed
-    # #     step.off()
-    # #     sleep(0.001)  # Adjust this delay as needed
+    
+    # SET DIRECTION
+    GPIO.output(DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
+    # ENABLE THE MOTOR
+    GPIO.output(EN_PIN, GPIO.LOW)
+    
+    # Move the specified number of steps
+    for _ in range(steps):
+        GPIO.output(STEP_PIN, GPIO.HIGH)
+        sleep(0.001)  # Adjust this delay as needed
+        GPIO.output(STEP_PIN, GPIO.LOW)
+        sleep(0.001)  # Adjust this delay as needed
 
     # # Disable the motor
     # sleep(7)
     # print("Disabling the motor")
-    # en.on()
+    GPIO.output(EN_PIN, GPIO.HIGH)
     # sleep(7)
 
 
 while True:
-    # move_stepper(2000, 0)  # Move 200 steps in one direction
-    print("enabling the motor")
-    en.off()
-    sleep(7)
-    print("Disabling the motor")
-    en.on()
-    sleep(7)
+    move_stepper(2000, 0)  # Move 200 steps in one direction
+    # print("enabling the motor")
+    # en.off()
+    # sleep(7)
+    # print("Disabling the motor")
+    # en.on()
+    # sleep(7)
 # Move the stepper motor
 # move_stepper(200, 1)  # Move 200 steps in one direction
 # sleep(1)  # Wait for a second
