@@ -20,7 +20,7 @@ def main():
     targetAngle = -0.88
     errorSum = 0
     
-    Kp = 40
+    Kp = 80
     Ki = 0
     Kd = 0
     
@@ -37,7 +37,7 @@ def main():
             
             currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
             
-            print(f"Current Angle: {currentAngle}")
+            # print(f"Current Angle: {currentAngle}")
             
             error = currentAngle - targetAngle
             errorSum = errorSum + error
@@ -46,7 +46,7 @@ def main():
             motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
             previousAngle = currentAngle
             
-            print(f"Current Angle: {currentAngle}, Motor Power: {motorPower}")
+            # print(f"Current Angle: {currentAngle}, Motor Power: {motorPower}")
             
             motorPower = constrain(motorPower, -100, 100)
             
