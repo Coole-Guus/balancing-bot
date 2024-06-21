@@ -13,7 +13,7 @@ def main():
     legs.changeHeight(110, 110)
     wheels.enable_motors()
     
-    timeSlice = 0.01
+    timeSlice = 0.005
     previousTime = time.time()
     gyroAngle = 0
     previousAngle = 0
@@ -32,6 +32,7 @@ def main():
             #     print(f"Motor Power: {a/10}")
             now = time.time()
             iterationTime = previousTime - now
+            print(f"Iteration Time: {iterationTime}")
             previousTime = now
             
             gy = mpu6050.read_gyro_y()
