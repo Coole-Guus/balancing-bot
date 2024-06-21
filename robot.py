@@ -13,7 +13,7 @@ def main():
     legs.changeHeight(110, 110)
     wheels.enable_motors()
     
-    timeSlice = 0.1
+    timeSlice = 0.01
     previousTime = time.time()
     gyroAngle = 0
     previousAngle = 0
