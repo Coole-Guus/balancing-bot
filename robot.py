@@ -29,6 +29,7 @@ def main():
         while True:
             for a in range(0, 5000, 1):
                 wheels.move_stepper(a/20)
+                print(f"Motor Power: {a/20}")
     #         now = time.time()
     #         iterationTime = previousTime - now
     #         previousTime = now
