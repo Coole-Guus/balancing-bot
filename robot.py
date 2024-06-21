@@ -23,6 +23,7 @@ def main():
     Kp = 7
     Ki = 0
     Kd = 0
+    gyroAngletotal = 0
     
     try:
         while True:
@@ -34,6 +35,7 @@ def main():
             grate = numpy.interp(gy, [-32768, 32768], [-250, 250])
             
             gyroAngle = grate*iterationTime
+            gyroAngletotal += gyroAngle
             print(f"Gyro Angle: {gyroAngle}")
             
             currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
