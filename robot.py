@@ -56,8 +56,8 @@ def main():
             # print(f"Motor Power: {motorPower}")
             
             wheels.move_stepper(motorPower)
-            if currentAngle > 25 or currentAngle < -25:
-                raise Exception("Robot has fallen over")
+            # if currentAngle > 25 or currentAngle < -25:
+            #     raise Exception("Robot has fallen over")
     except KeyboardInterrupt:
         wheels.disable_motors()
 
