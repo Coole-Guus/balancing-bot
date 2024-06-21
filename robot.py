@@ -13,14 +13,14 @@ def main():
     legs.changeHeight(110, 110)
     wheels.enable_motors()
     
-    timeSlice = 0.005
+    timeSlice = 0.01
     previousTime = time.time()
     gyroAngle = 0
     previousAngle = 0
     targetAngle = -3
     errorSum = 0
     
-    Kp = 7
+    Kp = 1
     Ki = 0
     Kd = 0
     gyroAngletotal = 0
