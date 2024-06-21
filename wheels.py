@@ -93,7 +93,7 @@ def move_stepper(speed):
         sleep(iterationTime)
         return
     
-    speed = speed / 2
+    # speed = speed / 2
     
     totalSteps = speed / iterationTime
     sleepTime = (iterationTime / totalSteps) / 2
