@@ -47,7 +47,7 @@ def main():
             previousAngle = currentAngle
             
             # print(f"Current Angle: {currentAngle}")
-            # time.sleep(timeSlice)
+            time.sleep(timeSlice)
             # motorPower = constrain(motorPower, -100, 100)
             
             # wheels.move_stepper(timeSlice, motorPower)
