@@ -32,7 +32,7 @@ def main():
             #     print(f"Motor Power: {a/10}")
             now = time.time()
             iterationTime = previousTime - now
-            print(f"Iteration Time: {iterationTime}")
+            # print(f"Iteration Time: {iterationTime}")
             previousTime = now
             
             gy = mpu6050.read_gyro_y()
@@ -42,7 +42,7 @@ def main():
             gyroAngletotal += gyroAngle
             
             currentAngle = 0.95 * (previousAngle + gyroAngle) + 0.05 * mpu6050.getAngle()
-            # print(f"Current Angle: {currentAngle}")
+            print(f"Current Angle: {currentAngle}")
             
             error = currentAngle - targetAngle
             errorSum = errorSum + error
@@ -53,7 +53,7 @@ def main():
             
             # print(f"Current Angle: {currentAngle}")
             motorPower = constrain(motorPower, -100, 100)
-            print(f"Motor Power: {motorPower}")
+            # print(f"Motor Power: {motorPower}")
             
             wheels.move_stepper(motorPower)
             if currentAngle > 25 or currentAngle < -25:
