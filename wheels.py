@@ -82,7 +82,7 @@ GPIO.setup(L_DIR_PIN, GPIO.OUT)
 #         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.LOW)
 #         sleep(sleepTime)  # Adjust this delay as needed
 
-iterationTime = 0.05
+iterationTime = 0.01
  
 def move_stepper(speed):
     assert -100 <= speed <= 100, "Velocity must be between 0 and 100"
