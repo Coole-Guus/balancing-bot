@@ -42,8 +42,8 @@ def main():
             gyroAngletotal += gyroAngle
             
             currentAngle = 0.9 * (previousAngle + gyroAngle) + 0.1 * mpu6050.getAngle()
-            print(f"Current Angle: {currentAngle}")
-            time.sleep(0.01)
+            # print(f"Current Angle: {currentAngle}")
+            # time.sleep(0.01)
             
             error = currentAngle - targetAngle
             errorSum = errorSum + error
@@ -57,7 +57,7 @@ def main():
             motorPower = constrain(motorPower, -100, 100)
             # print(f"Motor Power: {motorPower}")
             
-            # wheels.move_stepper(motorPower)
+            wheels.move_stepper(motorPower)
             # if currentAngle > 25 or currentAngle < -25:
             #     raise Exception("Robot has fallen over")
     except KeyboardInterrupt:
