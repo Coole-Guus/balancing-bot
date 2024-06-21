@@ -20,7 +20,7 @@ def main():
     targetAngle = 0
     errorSum = 0
     
-    Kp = 1.5
+    Kp = 6
     Ki = 0
     Kd = 0
     gyroAngletotal = 0
