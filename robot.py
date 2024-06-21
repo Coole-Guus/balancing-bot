@@ -27,11 +27,11 @@ def main():
     
     try:
         while True:
-            # time.sleep(2)
+            time.sleep(2)
             # legs.changeHeight(80, 120)
             # time.sleep(2)
             # legs.changeHeight(120, 80)
-            wheels.move_stepper(-2)
+            # wheels.move_stepper(-2)
     #         # for a in range(0, 1000, 1):
     #         #     wheels.move_stepper(a/10)
     #         #     print(f"Motor Power: {a/10}")
