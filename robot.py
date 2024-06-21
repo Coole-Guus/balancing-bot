@@ -27,8 +27,8 @@ def main():
     
     try:
         while True:
-            for a in range(0, 100, 0.05):
-                wheels.move_stepper(a)
+            for a in range(0, 5000, 1):
+                wheels.move_stepper(a/20)
     #         now = time.time()
     #         iterationTime = previousTime - now
     #         previousTime = now
