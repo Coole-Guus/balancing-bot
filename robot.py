@@ -36,7 +36,7 @@ def main():
             
             gyroAngle = grate*iterationTime
             gyroAngletotal += gyroAngle
-            print(f"Gyro Angle: {gyroAngle}")
+            print(f"Gyro Angle: {gyroAngletotal}")
             
             currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
             # print(f"Current Angle: {currentAngle}")
