@@ -98,7 +98,7 @@ def move_stepper(speed):
     totalSteps = speed / iterationTime
     sleepTime = (iterationTime / totalSteps) / 2
     sleepTime = round(sleepTime, 5)
-    print(f"Speed: {speed}, Total Steps: {totalSteps}, Sleep Time: {sleepTime}")
+    # print(f"Speed: {speed}, Total Steps: {totalSteps}, Sleep Time: {sleepTime}")
     
     # SET DIRECTION
     ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
