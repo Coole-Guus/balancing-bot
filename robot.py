@@ -10,7 +10,7 @@ def constrain(val, min_val, max_val):
     return min(max_val, max(min_val, val))
 
 def main():
-    legs.changeHeight(110, 110)
+    legs.changeHeight(120, 120)
     wheels.enable_motors()
     
     # timeSlice = 0.01
@@ -28,9 +28,9 @@ def main():
     try:
         while True:
             time.sleep(2)
-            legs.changeHeight(80, 110)
+            legs.changeHeight(80, 120)
             time.sleep(2)
-            legs.changeHeight(110, 80)
+            legs.changeHeight(120, 80)
     #         # for a in range(0, 1000, 1):
     #         #     wheels.move_stepper(a/10)
     #         #     print(f"Motor Power: {a/10}")
