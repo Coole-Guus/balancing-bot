@@ -27,29 +27,31 @@ def main():
     
     try:
         while True:
-            now = time.time()
-            iterationTime = previousTime - now
-            previousTime = now
+            for a in range(0, 100, 1):
+                wheels.move_stepper(a)
+            # now = time.time()
+            # iterationTime = previousTime - now
+            # previousTime = now
             
-            gy = mpu6050.read_gyro_y()
-            grate = numpy.interp(gy, [-32768, 32768], [-250, 250])
+            # gy = mpu6050.read_gyro_y()
+            # grate = numpy.interp(gy, [-32768, 32768], [-250, 250])
             
-            gyroAngle = grate*iterationTime
-            gyroAngletotal += gyroAngle
-            print(f"Gyro Angle: {gyroAngletotal}")
+            # gyroAngle = grate*iterationTime
+            # gyroAngletotal += gyroAngle
+            # print(f"Gyro Angle: {gyroAngletotal}")
             
-            currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
-            # print(f"Current Angle: {currentAngle}")
+            # currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
+            # # print(f"Current Angle: {currentAngle}")
             
-            error = currentAngle - targetAngle
-            errorSum = errorSum + error
-            errorSum = constrain(errorSum, -300, 300)
+            # error = currentAngle - targetAngle
+            # errorSum = errorSum + error
+            # errorSum = constrain(errorSum, -300, 300)
             
-            motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
-            previousAngle = currentAngle
+            # motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
+            # previousAngle = currentAngle
             
-            # print(f"Current Angle: {currentAngle}")
-            time.sleep(timeSlice)
+            # # print(f"Current Angle: {currentAngle}")
+            # time.sleep(timeSlice)
             # motorPower = constrain(motorPower, -100, 100)
             
             # wheels.move_stepper(timeSlice, motorPower)

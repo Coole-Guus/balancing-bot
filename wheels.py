@@ -47,31 +47,62 @@ GPIO.setup(L_STEP_PIN, GPIO.OUT)
 GPIO.setup(L_DIR_PIN, GPIO.OUT)
 
 # Function to move the stepper motor
-def move_stepper(timeSlice, speed):
-    assert -100 <= speed <= 100, "Velocity must be between 0 and 100"
+# def move_stepper(timeSlice, speed):
+#     assert -100 <= speed <= 100, "Velocity must be between 0 and 100"
     
+#     direction = "forward" if speed > 0 else "backward"
+#     speed = abs(speed)
+#     maxSpeed = 0.0001
+    
+#     speed = speed * 2
+
+#     max(speed, 100)
+    
+#     maxSteps = timeSlice / maxSpeed
+#     totalSteps = int(maxSteps * (speed / 100))
+    
+#     if totalSteps == 0:
+#         sleep(timeSlice)
+#         return
+
+#     sleepTime = (timeSlice / totalSteps) / 2
+#     remainingTime = timeSlice - (totalSteps * sleepTime * 2)
+#     sleepTime = round(sleepTime, 5)
+    
+#     # SET DIRECTION
+#     ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction == "forward" else GPIO.LOW)
+#     ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.LOW if direction == "forward" else GPIO.HIGH)
+    
+#     # Move the specified number of steps
+#     for _ in range(int(totalSteps)):
+#         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.HIGH)
+#         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.HIGH)
+#         sleep(sleepTime)  # Adjust this delay as needed
+#         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.LOW)
+#         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.LOW)
+#         sleep(sleepTime)  # Adjust this delay as needed
+
+iterationTime = 0.1
+ 
+def move_stepper(speed):
+    assert -100 <= speed <= 100, "Velocity must be between 0 and 100"
     direction = "forward" if speed > 0 else "backward"
     speed = abs(speed)
-    maxSpeed = 0.0001
     
-    speed = speed * 2
-
-    max(speed, 100)
-    
-    maxSteps = timeSlice / maxSpeed
-    totalSteps = int(maxSteps * (speed / 100))
-    
-    if totalSteps == 0:
-        sleep(timeSlice)
+    if speed == 0:
+        sleep(iterationTime)
         return
-
-    sleepTime = (timeSlice / totalSteps) / 2
-    remainingTime = timeSlice - (totalSteps * sleepTime * 2)
+    
+    speed = speed / 10
+    
+    totalSteps = speed / iterationTime
+    sleepTime = (iterationTime / totalSteps) / 2
     sleepTime = round(sleepTime, 5)
+    print(f"Speed: {speed}, Total Steps: {totalSteps}, Sleep Time: {sleepTime}")
     
     # SET DIRECTION
-    ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction == "forward" else GPIO.LOW)
-    ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.LOW if direction == "forward" else GPIO.HIGH)
+    ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
+    ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.LOW if direction else GPIO.HIGH)
     
     # Move the specified number of steps
     for _ in range(int(totalSteps)):
