@@ -8,6 +8,8 @@ kit = ServoKit(channels=16)
 # Servo 11: upper left leg  
 # Servo 14: lower right leg
 # Servo 15: upper right leg
+MiddleLower = 6
+MiddleUpper = 7
 LeftLower = 11
 LeftUpper = 10
 RightLower = 14
@@ -74,24 +76,36 @@ def changeHeight(newVal: float, oldVal: float):
         for a in range(oldVal*precision, newVal*precision, 1):
             b = a/precision
             leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*b, 0)
+            middleLowerValue, middleUpperValue, unused = calculateLegJointsInDeg(0, -1*b, 0)
             setServo(LeftLower, leftLowerValue)
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
             setServo(RightUpper, 180 - leftUpperValue)
+            middleLowerValue, middleUpperValue, unused = calculateLegJointsInDeg(0, -1*(b+30), 0)
+            setServo(MiddleLower, 180 - middleLowerValue)
+            setServo(MiddleUpper, 180 - middleUpperValue)
             # sleep(timeQuantum/precision)
     elif newVal - oldVal == 0:
         leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*newVal, 0)
+        middleLowerValue, middleUpperValue, unused = calculateLegJointsInDeg(0, -1*newVal, 0)
         setServo(LeftLower, leftLowerValue)
         setServo(LeftUpper, leftUpperValue)
         setServo(RightLower, 180 - leftLowerValue)
         setServo(RightUpper, 180 - leftUpperValue)
+        middleLowerValue, middleUpperValue, unused = calculateLegJointsInDeg(0, -1*(b+30), 0)
+        setServo(MiddleLower, 180 - middleLowerValue)
+        setServo(MiddleUpper, 180 - middleUpperValue)
         # sleep(timeQuantum/precision)
     else:
         for a in range(oldVal*precision, newVal*precision, -1):
             b = a/precision
             leftLowerValue, leftUpperValue, unused = calculateLegJointsInDeg(0, -1*b, 0)
+            middleLowerValue, middleUpperValue, unused = calculateLegJointsInDeg(0, -1*b, 0)
             setServo(LeftLower, leftLowerValue)
             setServo(LeftUpper, leftUpperValue)
             setServo(RightLower, 180 - leftLowerValue)
             setServo(RightUpper, 180 - leftUpperValue)
+            middleLowerValue, middleUpperValue, unused = calculateLegJointsInDeg(0, -1*(b+30), 0)
+            setServo(MiddleLower, 180 - middleLowerValue)
+            setServo(MiddleUpper, 180 - middleUpperValue)
             # sleep(timeQuantum/precision)
