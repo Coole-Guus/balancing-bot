@@ -90,7 +90,7 @@ def changeHeight(newVal: float, oldVal: float):
         setServo(LeftUpper, leftUpperValue)
         setServo(RightLower, 180 - leftLowerValue)
         setServo(RightUpper, 180 - leftUpperValue)
-        middleLowerValue, middleUpperValue, unused = calculateLegJointsInDeg(0, -1*b - 20, 0)
+        middleLowerValue, middleUpperValue, unused = calculateLegJointsInDeg(0, -1*newVal - 20, 0)
         setServo(MiddleLower, 180 - middleLowerValue)
         setServo(MiddleUpper, 180 - middleUpperValue)
         # sleep(timeQuantum/precision)
