@@ -10,61 +10,47 @@ def constrain(val, min_val, max_val):
     return min(max_val, max(min_val, val))
 
 def main():
+    # Set initial leg height
     legs.changeHeight(120, 120)
     wheels.enable_motors()
     
-    # timeSlice = 0.01
-    # previousTime = time.time()
-    # gyroAngle = 0
-    # previousAngle = 0
-    # targetAngle = 0
-    # errorSum = 0
+    # Values for sliding window angle calculation
+    previousTime = time.time()
+    gyroAngle = 0
+    previousAngle = 0
+    targetAngle = 0
+    errorSum = 0
     
-    # Kp = 6
-    # Ki = 0
-    # Kd = 0
-    # gyroAngletotal = 0
+    # PID control
+    Kp = 6
+    Ki = 0
+    Kd = 0
     
     try:
         while True:
-            time.sleep(2)
-            # legs.changeHeight(80, 120)
-            # time.sleep(2)
-            # legs.changeHeight(120, 80)
-            # wheels.move_stepper(-2)
-    #         # for a in range(0, 1000, 1):
-    #         #     wheels.move_stepper(a/10)
-    #         #     print(f"Motor Power: {a/10}")
-    #         now = time.time()
-    #         iterationTime = previousTime - now
-    #         # print(f"Iteration Time: {iterationTime}")
-    #         previousTime = now
+            now = time.time()
+            iterationTime = previousTime - now
+            previousTime = now
             
-    #         gy = mpu6050.read_gyro_y()
-    #         grate = numpy.interp(gy, [-32768, 32768], [-250, 250])
+            gy = mpu6050.read_gyro_y()
+            grate = numpy.interp(gy, [-32768, 32768], [-250, 250])
             
-    #         gyroAngle = grate*iterationTime
-    #         gyroAngletotal += gyroAngle
+            gyroAngle = grate*iterationTime
             
-    #         currentAngle = 0.95 * (previousAngle + gyroAngle) + 0.05 * mpu6050.getAngle()
-    #         # print(f"Current Angle: {currentAngle}")
-    #         # time.sleep(0.01)
+            currentAngle = 0.95 * (previousAngle + gyroAngle) + 0.05 * mpu6050.getAngle()
+
+            error = currentAngle - targetAngle
+            errorSum = errorSum + error
+            errorSum = constrain(errorSum, -300, 300)
             
-    #         error = currentAngle - targetAngle
-    #         errorSum = errorSum + error
-    #         errorSum = constrain(errorSum, -300, 300)
+            motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
+            previousAngle = currentAngle
             
-    #         motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
-    #         previousAngle = currentAngle
+            motorPower = constrain(motorPower, -100, 100)
             
-            
-    #         # print(f"Current Angle: {currentAngle}")
-    #         motorPower = constrain(motorPower, -100, 100)
-    #         # print(f"Motor Power: {motorPower}")
-            
-    #         wheels.move_stepper(motorPower)
-    #         # if currentAngle > 25 or currentAngle < -25:
-    #         #     raise Exception("Robot has fallen over")
+            wheels.move_stepper(motorPower)
+            if currentAngle > 25 or currentAngle < -25:
+                raise Exception("Robot has fallen over")
     except KeyboardInterrupt:
         wheels.disable_motors()
 

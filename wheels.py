@@ -1,16 +1,6 @@
 import RPi.GPIO as GPIO
 from time import sleep
 
-# stepper left pinout:
-# en = 11
-# step = 13
-# dir = 15
-
-# stepper right pinout:
-# en = 12
-# step = 16
-# dir = 18
-
 ENABLE_L = True
 ENABLE_R = True
 
@@ -19,22 +9,10 @@ R_EN_PIN = 18  # Enable pin
 R_STEP_PIN = 23  # Step pin
 R_DIR_PIN = 24  # Direction pin
 
-
 # # Define the pins
 L_EN_PIN = 17  # Enable pin
 L_STEP_PIN = 27  # Step pin
 L_DIR_PIN = 22  # Direction pin
-
-# # Define the pins
-# R_EN_PIN = 12  # Enable pin
-# R_STEP_PIN = 16  # Step pin
-# R_DIR_PIN = 18  # Direction pin
-
-
-# # Define the pins
-# L_EN_PIN = 11  # Enable pin
-# L_STEP_PIN = 13  # Step pin
-# L_DIR_PIN = 15  # Direction pin
 
 GPIO.setmode(GPIO.BCM)
 
@@ -45,42 +23,6 @@ GPIO.setup(R_DIR_PIN, GPIO.OUT)
 GPIO.setup(L_EN_PIN, GPIO.OUT)
 GPIO.setup(L_STEP_PIN, GPIO.OUT)
 GPIO.setup(L_DIR_PIN, GPIO.OUT)
-
-# Function to move the stepper motor
-# def move_stepper(timeSlice, speed):
-#     assert -100 <= speed <= 100, "Velocity must be between 0 and 100"
-    
-#     direction = "forward" if speed > 0 else "backward"
-#     speed = abs(speed)
-#     maxSpeed = 0.0001
-    
-#     speed = speed * 2
-
-#     max(speed, 100)
-    
-#     maxSteps = timeSlice / maxSpeed
-#     totalSteps = int(maxSteps * (speed / 100))
-    
-#     if totalSteps == 0:
-#         sleep(timeSlice)
-#         return
-
-#     sleepTime = (timeSlice / totalSteps) / 2
-#     remainingTime = timeSlice - (totalSteps * sleepTime * 2)
-#     sleepTime = round(sleepTime, 5)
-    
-#     # SET DIRECTION
-#     ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction == "forward" else GPIO.LOW)
-#     ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.LOW if direction == "forward" else GPIO.HIGH)
-    
-#     # Move the specified number of steps
-#     for _ in range(int(totalSteps)):
-#         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.HIGH)
-#         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.HIGH)
-#         sleep(sleepTime)  # Adjust this delay as needed
-#         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.LOW)
-#         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.LOW)
-#         sleep(sleepTime)  # Adjust this delay as needed
 
 iterationTime = 0.01
  
@@ -93,12 +35,11 @@ def move_stepper(speed):
         sleep(iterationTime)
         return
     
+    # Calculate the number of steps needed to move the specified distance and sleep time for those steps
     speed = speed / 75
-    
     totalSteps = speed / iterationTime
     sleepTime = (iterationTime / totalSteps) / 2
     sleepTime = round(sleepTime, 5)
-    # print(f"Speed: {speed}, Total Steps: {totalSteps}, Sleep Time: {sleepTime}")
     
     # SET DIRECTION
     ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction == "forward" else GPIO.LOW)
@@ -108,10 +49,10 @@ def move_stepper(speed):
     for _ in range(int(totalSteps)):
         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.HIGH)
         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.HIGH)
-        sleep(sleepTime)  # Adjust this delay as needed
+        sleep(sleepTime)
         ENABLE_R and GPIO.output(R_STEP_PIN, GPIO.LOW)
         ENABLE_L and GPIO.output(L_STEP_PIN, GPIO.LOW)
-        sleep(sleepTime)  # Adjust this delay as needed
+        sleep(sleepTime)
     
 def enable_motors():
     ENABLE_R and GPIO.output(R_EN_PIN, GPIO.LOW)
