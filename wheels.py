@@ -101,8 +101,8 @@ def move_stepper(speed):
     # print(f"Speed: {speed}, Total Steps: {totalSteps}, Sleep Time: {sleepTime}")
     
     # SET DIRECTION
-    ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
-    ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.LOW if direction else GPIO.HIGH)
+    ENABLE_R and GPIO.output(R_DIR_PIN, GPIO.HIGH if direction == "forward" else GPIO.LOW)
+    ENABLE_L and GPIO.output(L_DIR_PIN, GPIO.LOW if direction == "forward" else GPIO.HIGH)
     
     # Move the specified number of steps
     for _ in range(int(totalSteps)):
