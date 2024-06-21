@@ -38,7 +38,6 @@ def main():
             
             gyroAngle = grate*iterationTime
             gyroAngletotal += gyroAngle
-            print(f"Gyro Angle: {gyroAngletotal}")
             
             currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
             # print(f"Current Angle: {currentAngle}")
@@ -52,6 +51,7 @@ def main():
             
             # print(f"Current Angle: {currentAngle}")
             motorPower = constrain(motorPower, -100, 100)
+            print(f"Motor Power: {motorPower}")
             
             wheels.move_stepper(motorPower)
             if currentAngle > 25 or currentAngle < -25:
