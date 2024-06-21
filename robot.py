@@ -34,6 +34,7 @@ def main():
             grate = numpy.interp(gy, [-32768, 32768], [-250, 250])
             
             gyroAngle = grate*iterationTime
+            print(f"Gyro Angle: {gyroAngle}")
             
             currentAngle = 0.9934 * (previousAngle + gyroAngle) + 0.0066 * mpu6050.getAngle()
             # print(f"Current Angle: {currentAngle}")
@@ -45,13 +46,13 @@ def main():
             motorPower = Kp*(error) + Ki*(errorSum)*iterationTime - Kd*(currentAngle-previousTime)/iterationTime
             previousAngle = currentAngle
             
-            print(f"Current Angle: {currentAngle}")
-            time.sleep(timeSlice)
-            motorPower = constrain(motorPower, -100, 100)
+            # print(f"Current Angle: {currentAngle}")
+            # time.sleep(timeSlice)
+            # motorPower = constrain(motorPower, -100, 100)
             
-            wheels.move_stepper(timeSlice, motorPower)
-            if currentAngle > 25 or currentAngle < -25:
-                raise Exception("Robot has fallen over")
+            # wheels.move_stepper(timeSlice, motorPower)
+            # if currentAngle > 25 or currentAngle < -25:
+            #     raise Exception("Robot has fallen over")
     except KeyboardInterrupt:
         wheels.disable_motors()
 
