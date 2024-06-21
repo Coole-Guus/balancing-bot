@@ -20,7 +20,7 @@ def main():
     targetAngle = -3
     errorSum = 0
     
-    Kp = 40
+    Kp = 20
     Ki = 0
     Kd = 0
     gyroAngletotal = 0
@@ -41,7 +41,7 @@ def main():
             gyroAngle = grate*iterationTime
             gyroAngletotal += gyroAngle
             
-            currentAngle = 0.95 * (previousAngle + gyroAngle) + 0.05 * mpu6050.getAngle()
+            currentAngle = 0.96 * (previousAngle + gyroAngle) + 0.04 * mpu6050.getAngle()
             print(f"Current Angle: {currentAngle}")
             
             error = currentAngle - targetAngle
